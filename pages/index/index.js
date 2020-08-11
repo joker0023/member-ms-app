@@ -10,16 +10,17 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function () {
-    wx.getUserInfo({
-      success: res => {
-        console.log(res);
-      }
-    });
+    // wx.getUserInfo({
+    //   success: res => {
+    //     console.log(res);
+    //   }
+    // });
   },
   onReady: function() {
     // wx.switchTab({
     //   "url": "/pages/shop/shop"
     // });
+    console.log('token', app.globalData.token);
   },
   getUserInfo: function(e) {
     console.log(e)

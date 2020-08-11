@@ -1,6 +1,7 @@
-var urlPrefix = 'http://localhost:9091';
+var urlPrefix = 'http://localhost:9090';
 var apiUrl = {
-  hello: urlPrefix + '/hello'
+  login: urlPrefix + '/auth/appLogin',
+  updateUser: urlPrefix + '/app/updateUser'
 };
 
 var ajax = function (method, url, data, header, callback) {
@@ -17,8 +18,12 @@ var ajax = function (method, url, data, header, callback) {
     header = {};
   }
   return new Promise((resolve, reject) => {
-    console.log(url);
-    console.log(data, header);
+    var logData = {
+      url: url,
+      data: data,
+      header: header
+    };
+    console.log('ajax-request: ', logData);
     wx.request({
       method: method,
       url: url,
@@ -26,7 +31,7 @@ var ajax = function (method, url, data, header, callback) {
       header: header,
       success: function (resp) {
         wx.hideLoading();
-        console.log('respose obj: ', resp);
+        console.log('respose obj: ', resp.data);
         if (resp.data.code != 0) {
           wx.showModal({
             content: resp.data.message || '服务器出错',
@@ -43,6 +48,7 @@ var ajax = function (method, url, data, header, callback) {
           content: '网络错误',
           showCancel: false
         });
+        reject && reject(resp);
       }
     });
   });
@@ -56,12 +62,24 @@ var doGet = function (url, header, callback) {
   return ajax('GET', url, null, header, callback);
 }
 
-var hello = function (code, userInfo, callback) {
-  return doGet(apiUrl.hello, null, callback);
-};
+var login = function(code) {
+  return doPost(apiUrl.login, {
+    code: code
+  }, null, null);
+}
+
+var updateUser = function(token, nick, avatar) {
+  return doPost(apiUrl.updateUser, {
+    nick: nick,
+    avatar: avatar
+  }, {
+    token: token
+  }, null);
+}
 
 
 
 module.exports = {
-  hello: hello
+  login: login,
+  updateUser: updateUser
 }
