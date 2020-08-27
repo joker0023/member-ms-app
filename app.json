@@ -17,18 +17,6 @@
         "selectedIconPath": ""
       },
       {
-        "pagePath": "pages/member/member",
-        "text": "会员",
-        "iconPath": "",
-        "selectedIconPath": ""
-      },
-      {
-        "pagePath": "pages/clerk/clerk",
-        "text": "店员",
-        "iconPath": "",
-        "selectedIconPath": ""
-      },
-      {
         "pagePath": "pages/mine/mine",
         "text": "我的",
         "iconPath": "",
