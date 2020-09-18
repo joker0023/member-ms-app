@@ -1,0 +1,9 @@
+/* pages/record/record.wxss */
+.item-desc {
+  background-color: #eee;
+  padding: 15px;
+  box-shadow: inset 0px 0px 10px #ccc;
+}
+.hidden {
+  display: none;
+}

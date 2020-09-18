@@ -1,1 +1,11 @@
 /* pages/shop/shop.wxss */
+
+
+.no-shop {
+  color: #ccc;
+  text-align: center;
+}
+.no-shop > .desc {
+  padding-top: 100px;
+  padding-bottom: 15px;
+}

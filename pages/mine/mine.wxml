@@ -1,2 +1,23 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="container">
+  <view class="header">
+    <view class="avatar">
+      <image></image>
+    </view>
+    <view class="mname">
+      <text>name</text>
+    </view>
+    <view class="qrcode">
+      <image src="/img/qr.jpg"></image>
+    </view>
+  </view>
+  <view class="item-list">
+    <navigator class="item" url="/pages/clerk/clerk">
+      <text class="title">name</text>
+      <text>123</text>
+    </navigator>
+    <navigator class="item">
+      <text class="title">name</text>
+    </navigator>
+  </view>
+</view>

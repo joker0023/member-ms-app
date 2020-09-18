@@ -1,9 +1,14 @@
 {
   "pages": [
+    
     "pages/shop/shop",
-    "pages/member/member",
+    "pages/mine/mine",
     "pages/clerk/clerk",
-    "pages/mine/mine"
+    "pages/member/member",
+    "pages/detail/detail",
+    "pages/record/record",
+    "pages/index/index"
+    
   ],
   "tabBar": {
     "color": "#ccc",

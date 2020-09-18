@@ -1,2 +1,11 @@
 <!--pages/clerk/clerk.wxml-->
-<text>pages/clerk/clerk.wxml</text>
+<view class="container">
+  <view class="top-line"></view>
+  <view class="item-list">
+    <navigator class="item" url="/pages/detail/detail">
+      <view class="img"></view>
+      <text class="title">name</text>
+    </navigator>
+  </view>
+  <button class="add-btn" type="primary">add</button>
+</view>

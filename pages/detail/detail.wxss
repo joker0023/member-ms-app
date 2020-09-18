@@ -1,0 +1,12 @@
+/* pages/detail/detail.wxss */
+.desc {
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 15px;
+}
+.del-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0;
+}

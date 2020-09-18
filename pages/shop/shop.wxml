@@ -1,2 +1,35 @@
 <!--pages/shop/shop.wxml-->
-<text>pages/shop/shop.wxml</text>
+<view class="container">
+  <view class="header">
+    <view class="avatar">
+      <image></image>
+    </view>
+    <view class="mname">
+      <text>name</text>
+    </view>
+  </view>
+  <view class="item-list">
+    <navigator class="item" url="/pages/record/record">
+      <view class="img"></view>
+      <text class="title">record</text>
+      <text>123</text>
+    </navigator>
+    <navigator class="item" url="/pages/clerk/clerk">
+      <view class="img"></view>
+      <text class="title">clerk</text>
+      <text>123</text>
+    </navigator>
+    <navigator class="item"  url="/pages/member/member">
+       <view class="img"></view>
+      <text class="title">member</text>
+      <text>123</text>
+    </navigator>
+  </view>
+
+  <!-- <view class="no-shop">
+    <view class="desc">
+      <text>您还没有店铺，点击添加</text>
+    </view>
+    <button size="mini" type="primary">添加店铺</button>
+  </view> -->
+</view>

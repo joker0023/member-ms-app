@@ -1,1 +1,16 @@
 /* pages/clerk/clerk.wxss */
+
+.item-list > .item icon {
+  color: red;
+  vertical-align: middle;
+  position: absolute;
+  right: 15px;
+  top: 18px;
+}
+
+.add-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0;
+}

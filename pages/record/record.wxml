@@ -1,0 +1,14 @@
+<!--pages/record/record.wxml-->
+<view class="container">
+  <view class="top-line"></view>
+  <view class="item-list">
+    <view wx:for="{{records}}" wx:for-index="idx" wx:for-item="record" wx:key="id">
+      <view class="item" data-recordid="{{record.id}}" bindtap="toggleDesc">
+        <text class="title">{{record.title}}</text>
+      </view>
+      <view wx:if="{{record.desc}}">
+        <view class="item-desc">{{record.content}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,1 +1,11 @@
 /* pages/mine/mine.wxss */
+.header .qrcode {
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+}
+.header .qrcode image {
+  width: 100%;
+  height: 100%;
+}
