@@ -2,10 +2,10 @@
 <view class="container">
   <view class="header">
     <view class="avatar">
-      <image></image>
+      <image wx:if="{{user}}" src="{{user.avatar}}"></image>
     </view>
     <view class="mname">
-      <text>name</text>
+      <text wx:if="{{user}}">{{user.nick}}</text>
     </view>
     <view class="qrcode">
       <image src="/img/qr.jpg"></image>
@@ -13,11 +13,10 @@
   </view>
   <view class="item-list">
     <navigator class="item" url="/pages/clerk/clerk">
-      <text class="title">name</text>
-      <text>123</text>
+      <text class="title">充值记录</text>
     </navigator>
     <navigator class="item">
-      <text class="title">name</text>
+      <text class="title">消费记录</text>
     </navigator>
   </view>
 </view>

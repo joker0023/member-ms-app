@@ -11,11 +11,11 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log('login ok', res);
         // self.login(res.code);
-        // self.globalData.token = '';
+        self.globalData.token = 'fc9eadebf877cc161bcb3dcfa89e4694';
       }
     })
   },
-  login: function(code) {
+  login(code) {
     var self = this;
     api.login(code).then(res => {
       if (res.code == 0) {
@@ -28,13 +28,29 @@ App({
       wx.getUserInfo({
         success: res => {
           console.log(res);
-          api.updateUser(self.globalData.token, res.userInfo.nickName, res.userInfo.avatarUrl);
+          api.post.updateUser(self.globalData.token, {
+            nick: res.userInfo.nickName,
+            avatar: res.userInfo.avatarUrl
+          });
         }
       });
     });
   },
+  checkToken(callback) {
+    var self = this;
+    setTimeout(() => {
+      console.log(self.globalData);
+      if (self.globalData.token) {
+        callback && callback();
+      } else{
+        self.checkToken();
+      }
+    }, 1000);
+  },
+  
   globalData: {
-    userInfo: null,
-    token: null
+    token: null,
+    shopInfoVo: null,
+    user: null
   }
 })

@@ -1,10 +1,32 @@
-var urlPrefix = 'http://localhost:9090';
-var apiUrl = {
-  login: urlPrefix + '/auth/appLogin',
-  updateUser: urlPrefix + '/app/updateUser'
-};
+let urlPrefix = 'http://localhost:9090';
+let loginUrl = '/auth/appLogin';
+let getApiUrl = {
+  getUser: '/app/getUser',
+  getOwnerShop: '/app/getOwnerShop',
+  getShopInfoVo: '/app/getShopInfoVo',
+  listMembers: '/app/listMembers',
+  getMemberVo: '/app/getMemberVo',
+  listRechargeBill: '/app/listRechargeBill',
+  listConsumeBill: '/app/listConsumeBill',
+  getRechargeBillVo: '/app/getRechargeBillVo',
+  getConsumeBillVo: '/app/getConsumeBillVo',
+  listClerks: '/app/listClerks',
 
-var ajax = function (method, url, data, header, callback) {
+};
+let postApiUrl = {
+  updateUser: '/app/updateUser',
+  addShop: '/app/addShop',
+  updateShop: '/app/updateShop',
+  addMember: '/app/addMember',
+  delMember: '/app/delMember',
+  recharge: '/app/recharge',
+  consume: '/app/consume',
+  addClerk: '/app/addClerk',
+  delClerk: '/app/delClerk',
+  
+}
+
+let ajax = function (method, url, data, header, callback) {
   if (!method) {
     method = 'GET';
   }
@@ -18,7 +40,7 @@ var ajax = function (method, url, data, header, callback) {
     header = {};
   }
   return new Promise((resolve, reject) => {
-    var logData = {
+    let logData = {
       url: url,
       data: data,
       header: header
@@ -54,32 +76,55 @@ var ajax = function (method, url, data, header, callback) {
   });
 };
 
-var doPost = function (url, data, header, callback) {
+let doPost = function (url, data, header, callback) {
   return ajax('POST', url, data, header, callback);
 };
 
-var doGet = function (url, header, callback) {
+let doGet = function (url, header, callback) {
   return ajax('GET', url, null, header, callback);
 }
 
-var login = function(code) {
-  return doPost(apiUrl.login, {
+let login = function(code) {
+  return doPost(urlPrefix + loginUrl, {
     code: code
   }, null, null);
 }
 
-var updateUser = function(token, nick, avatar) {
-  return doPost(apiUrl.updateUser, {
-    nick: nick,
-    avatar: avatar
-  }, {
-    token: token
-  }, null);
+// let updateUser = function(token, nick, avatar) {
+//   return doPost(apiUrl.updateUser, {
+//     nick: nick,
+//     avatar: avatar
+//   }, {
+//     token: token
+//   }, null);
+// }
+
+let getMethods = {};
+for (let k in getApiUrl) {
+  let url = urlPrefix + getApiUrl[k];
+  getMethods[k] = function(token, params) {
+    if (!params) {
+      params = '';
+    }
+    return doGet(url + '?' + params, {
+      token: token
+    }, null);
+  };
 }
 
+let postMethods = {};
+for (let k in postApiUrl) {
+  let url = urlPrefix + postApiUrl[k];
+  postMethods[k] = function(token, data) {
+    return doPost(url, data, {
+      token: token
+    }, null);
+  };
+}
 
 
 module.exports = {
   login: login,
-  updateUser: updateUser
+  get: getMethods,
+  post: postMethods
 }
